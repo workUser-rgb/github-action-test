@@ -1,0 +1,15 @@
+name: "ZeroThreat DAST Analyzer"
+description: "Scan for security issues in web applications"
+
+inputs:
+  zt_token:
+    description: 'ZT_TOKEN to authenticate API request & start the scan.'
+    required: true
+
+outputs:
+  vulnerability:
+    description: 'Scan Status'
+    value: ${{ steps.scan.outputs.vulnerability }}
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
