@@ -1,6 +1,6 @@
 # Zero Threat AI Powered Security Scanner
 
-Secure your code proactively. Use the ZeroThreat AI Powered Web Application/API Security Scanner to perform Dynamic Application Security Testing (DAST). It enables comprehensive Dynamic Analysis Security Testing (DAST) to detect vulnerabilities, making findings readily available on the ZeroThreat Portal for continuous monitoring.
+Secure your code proactively. Use the ZeroThreat AI Powered Web Application/API Security Scanner to perform Dynamic Application Security Testing (DAST). It enables comprehensive Dynamic Application Security Testing (DAST) to detect vulnerabilities, making findings readily available on the ZeroThreat Portal for continuous monitoring.
 
 ## Inputs
 
