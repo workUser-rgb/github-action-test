@@ -1,6 +1,8 @@
 name: "ZeroThreat AI DAST Analyzer"
 description: "Scan for security issues in web applications/APIs"
-
+branding:
+  icon: check-circle
+  color: purple
 inputs:
   zt_token:
     description: 'ZT_TOKEN to authenticate API request & start the scan.'
