@@ -17,9 +17,9 @@ Secure your code proactively. Use the ZeroThreat AI Powered Web Application/API 
 
 ### Secrets Setup
 1. Generate the `zt_token` from the ZeroThreat Portal.
-Add the secret in your GitHub repository under **Settings > Secrets**:
-
-- `zt_token`: ZT_TOKEN to authenticate API request & start the scan.
+   
+2. Add the secret in your GitHub repository under **Settings > Secrets**:
+    - `zt_token`: ZT_TOKEN to authenticate API request & start the scan.
 
 
 ## Notes
