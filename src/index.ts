@@ -4,19 +4,41 @@ import axios from 'axios';
 async function run() {
     try {
         const token = core.getInput('zt_token', { required: true });
-
+        const waitForAnalysis = core.getInput('wait_for_analysis', { required: false });
         core.info(`Initiating security scan request`);
 
         // Initiate the scan
-        const initiateResponse = await axios.post(`https://api.zerothreat.ai/api/scan/devops`, { token });
-        const scanData = initiateResponse.data.scanData;
+        const apiUrl = `https://api.zerothreat.ai/api/scan/devops`;
+        const initiateResponse = await axios.post(apiUrl, { token });
+        const response = initiateResponse.data;
+        const code = response.code;
+        if(response.status == 200)
+        core.info(`Scan started successfully.\nScan Report Url: ${response.url}`);
+        else
+            core.setFailed(`Scan Failed.\nReason: ${response.message}`);
+        let intervalId:any = undefined
+        async function checkScanStatus(){
+            if(intervalId)
+                clearInterval(intervalId);
+            try {
+                const axiosResponse = await axios.get(`https://api.zerothreat.ai/api/scan/devops/${code}`);
+                const response = axiosResponse.data;
+                if (response.scanStatus >= 4) {
+                    core.info(`Scan completed successfully.`);
+                }else{
+                    core.info(`Scan is inprogress [${new Date().toString()}].`);
+                    intervalId = setInterval(async ()=>{await checkScanStatus()},300000)
+                }
+                    
+            } catch (error) {
+                clearInterval(intervalId);
+                core.setFailed(`Status polling failed: ${error instanceof Error ? error.message : String(error)}`);
+            }
+        }
 
-        core.info(`Scan initiated - Here is the scan url: ${scanData.scanId}, Status: ${scanData.status}`);
-
-        // Base comment/log body
-        let messageBody = `## Scan Initiated\n**Scan Report URL**: [${scanData.reportUrl}](scanData.reportUrl)\n**Status**: ${scanData.status}\n`;
-        core.info(messageBody)
-        
+        if(waitForAnalysis){
+            checkScanStatus();
+        }
     } catch (error) {
         core.setFailed(`Action failed: ${error instanceof Error ? error.message : String(error)}`);
     }

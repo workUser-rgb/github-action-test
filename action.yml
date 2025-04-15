@@ -1,0 +1,15 @@
+name: "ZeroThreat AI DAST Analyzer"
+description: "Scan for security issues in web applications/APIs"
+
+inputs:
+  zt_token:
+    description: 'ZT_TOKEN to authenticate API request & start the scan.'
+    required: true
+  #Wait for analysis settings
+  wait_for_analysis:
+    description: 'Set this true to wait for analysis to complete before finishing job.'
+    required: false
+    default: 'false'
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
