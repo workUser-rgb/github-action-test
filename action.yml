@@ -1,14 +1,14 @@
-name: "ZeroThreat AI DAST Analyzer"
+name: "ZeroThreat AI DAST Scanner"
 description: "Scan for security issues in web applications/APIs"
 branding:
   icon: check-circle
   color: purple
 inputs:
-  zt_token:
+  ZT_TOKEN:
     description: 'ZT_TOKEN to authenticate API request & start the scan.'
     required: true
   #Wait for analysis settings
-  wait_for_analysis:
+  WAIT_FOR_ANALYSIS:
     description: 'Set this true to wait for analysis to complete before finishing job.'
     required: false
     default: false
