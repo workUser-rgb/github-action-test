@@ -3,8 +3,8 @@ import axios from 'axios';
 
 async function run() {
     try {
-        const token = core.getInput('zt_token', { required: true });
-        const waitForAnalysis = core.getInput('wait_for_analysis', { required: false });
+        const token = core.getInput('ZT_TOKEN', { required: true });
+        const waitForAnalysis = core.getInput('WAIT_FOR_ANALYSIS', { required: false });
         core.info(`Initiating security scan request`);
 
         // Initiate the scan
