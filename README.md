@@ -6,8 +6,8 @@ Secure your code proactively. Use the ZeroThreat AI Powered Web Application/API 
 
 | Input               | Description                                                          | Required | Default |
 | ------------------- | -------------------------------------------------------------------- | -------- | ------- |
-| `zt_token`          | ZT_TOKEN to authenticate API request & start the scan.               | Yes      |         |
-| `wait_for_analysis` | Set this true to wait for analysis to complete before finishing job. | No       | false   |
+| `ZT_TOKEN`          | ZT_TOKEN to authenticate API request & start the scan.               | Yes      |         |
+| `WAIT_FOR_ANALYSIS` | Set this true to wait for analysis to complete before finishing job. | No       | false   |
 
 
 ## How It Works
