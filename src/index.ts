@@ -8,7 +8,7 @@ async function run() {
         core.info(`Initiating security scan request`);
 
         // Initiate the scan
-        const apiUrl = `https://api.zerothreat.ai/api/scan/devops`;
+        const apiUrl = `https://zt-stage-app-containerapps.agreeablestone-ae5e635a.centralus.azurecontainerapps.io/api/scan/devops`;
         const initiateResponse = await axios.post(apiUrl, { token });
         const response = initiateResponse.data;
         const code = response.code;
@@ -21,7 +21,7 @@ async function run() {
             if(intervalId)
                 clearInterval(intervalId);
             try {
-                const axiosResponse = await axios.get(`https://api.zerothreat.ai/api/scan/devops/${code}`);
+                const axiosResponse = await axios.get(`https://zt-stage-app-containerapps.agreeablestone-ae5e635a.centralus.azurecontainerapps.io/api/scan/devops/${code}`);
                 const response = axiosResponse.data;
                 if (response.scanStatus >= 4) {
                     core.info(`Scan completed successfully.`);
