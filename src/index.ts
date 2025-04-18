@@ -4,7 +4,8 @@ import axios from 'axios';
 async function run() {
     try {
         const token = core.getInput('ZT_TOKEN', { required: true });
-        const waitForAnalysis = core.getInput('WAIT_FOR_ANALYSIS', { required: false });
+        const waitForAnalysisInput = core.getInput('WAIT_FOR_ANALYSIS', { required: false });
+        const waitForAnalysis = waitForAnalysisInput?.toLowerCase() === 'true';
         core.info(`Initiating security scan request`);
 
         // Initiate the scan
@@ -27,7 +28,7 @@ async function run() {
                     core.info(`Scan completed successfully.`);
                 }else{
                     core.info(`Scan is inprogress [${new Date().toString()}].`);
-                    intervalId = setInterval(async ()=>{await checkScanStatus()},300000)
+                    intervalId = setInterval(async ()=>{await checkScanStatus()},10000)
                 }
                     
             } catch (error) {
